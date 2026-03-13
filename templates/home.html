@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="hero">
+
+<h1>Print • Browse • Shop – All in One Place!</h1>
+
+<p>Fast printing, reliable internet browsing, and quality stationery supplies.</p>
+
+<br>
+
+<a href="{% url 'upload_print' %}" class="btn-primary">Upload Document</a>
+
+<a href="/stationery/" class="btn-success">View Products</a>
+
+</section>
+
+<section class="announcements">
+
+<h2>Latest Announcements</h2>
+
+<div class="announcement-container">
+
+{% for announcement in announcements %}
+
+<div class="announcement-card">
+
+<h3>{{ announcement.title }}</h3>
+
+<p>{{ announcement.message }}</p>
+
+<small>{{ announcement.date_posted|date:"M d, Y" }}</small>
+
+</div>
+
+{% empty %}
+
+<p>No announcements available.</p>
+
+{% endfor %}
+
+</div>
+
+</section>
+
+{% endblock %}

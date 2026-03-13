@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="printing-page">
+
+<h1>Online Printing Service</h1>
+
+<p>Upload your document and we will print it for you quickly.</p>
+
+<br>
+
+<a href="{% url 'upload_print' %}" class="btn-primary">Upload Document</a>
+
+</section>
+
+{% endblock %}

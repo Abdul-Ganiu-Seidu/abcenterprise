@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}   
+
+{% block content %}
+
+<section id="services" class="services">
+
+    <h2>Our Services</h2>
+
+    <div class="service-card">
+        <img src="{% static 'images/printing.jpg' %}" width="200">
+        <h3>Printing Services</h3>
+        <p>Fast document printing and photocopy services.</p>
+    </div>
+
+    <div class="service-card">
+        <img src="{% static 'images/browsing.jpg' %}" width="200">
+        <h3>Internet Browsing</h3>
+        <p>High-speed internet access.</p>
+    </div>
+
+    <div class="service-card">
+        <img src="{% static 'images/stationery.jpg' %}" width="200">
+        <h3>Stationery Sales</h3>
+        <p>Books, pens and office supplies.</p>
+    </div>
+
+</section>
+{% endblock %}

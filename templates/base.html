@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>ABC Enterprise</title>
+<link rel="icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<header>
+
+<div class="header-container">
+    <img src="{% static 'images/logo.png' %}" alt="ABC Enterprise Logo" class="logo">
+    <h2 class="business-name">ABC Enterprise</h2> 
+</div>
+
+<nav>
+
+<a href="/">Home</a>
+<a href="/services/">Services</a>
+<a href="/printing/">Online Printing</a>
+<a href="/stationery/">Stationery Shop</a>
+<a href="/contact/">Contact</a>
+
+</nav>
+
+</header>
+
+{% block content %}
+
+{% endblock %}
+
+<footer>
+
+<p>ABC Enterprise © 2026</p>
+
+<p>Phone: 0242664489 / 0246071333</p>
+
+<p> Wulensi | Bimbilla</p>
+
+</footer>
+
+</body>
+
+</html>

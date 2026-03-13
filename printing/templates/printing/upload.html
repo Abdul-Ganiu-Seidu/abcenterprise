@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="online-printing">
+    <div class="container">
+        <h2>Upload Your Document</h2>
+
+        <form method="post" enctype="multipart/form-data" id="printOrderForm">
+            {% csrf_token %}
+            
+            {{ form.customer_name.label_tag }}<br>
+            {{ form.customer_name }}<br><br>
+
+            {{ form.phone.label_tag }}<br>
+            {{ form.phone }}<br><br>
+
+            {{ form.document.label_tag }}<br>
+            {{ form.document }}<br><br>
+
+            {{ form.print_type.label_tag }}<br>
+            {{ form.print_type }}<br><br>
+
+            {{ form.copies.label_tag }}<br>
+            {{ form.copies }}<br><br>
+
+            {{ form.pages.label_tag }}<br>
+            {{ form.pages }}<br><br>
+
+            {{ form.color_type.label_tag }}<br>
+            {{ form.color_type }}<br><br>
+
+            {{ form.delivery_method.label_tag }}<br>
+            {{ form.delivery_method }}<br><br>
+
+            <div id="deliveryAddressField">
+                {{ form.delivery_address.label_tag }}<br>
+                {{ form.delivery_address }}<br><br>
+            </div>
+
+            {{ form.payment_method.label_tag }}<br>
+            {{ form.payment_method }}<br><br>
+
+            <h3>Total Price: GHS <span id="totalPrice">0.00</span></h3>
+
+            <button type="submit" class="btn-primary">Submit Print Order</button>
+        </form>
+    </div>
+</section>
+
+<script>
+    // Prices passed dynamically from Django
+    const pricing = {
+        text_bw: {{ pricing.text_bw_price }},
+        text_color: {{ pricing.text_color_price }},
+        photo_bw: {{ pricing.photo_bw_price }},
+        photo_color: {{ pricing.photo_color_price }},
+        delivery: {{ pricing.delivery_fee }},
+    };
+
+    const pagesField = document.getElementById('id_pages');
+    const copiesField = document.getElementById('id_copies');
+    const colorField = document.getElementById('id_color_type');
+    const printTypeField = document.getElementById('id_print_type');
+    const deliveryMethodField = document.getElementById('id_delivery_method');
+    const totalPriceSpan = document.getElementById('totalPrice');
+    const deliveryAddressField = document.getElementById('deliveryAddressField');
+
+    function updateTotalPrice() {
+        let pages = parseInt(pagesField.value) || 0;
+        let copies = parseInt(copiesField.value) || 1;
+        let colorType = colorField.value;
+        let printType = printTypeField.value;
+        let deliveryMethod = deliveryMethodField.value;
+
+        let pricePerPage = 0;
+
+        if(printType === 'text' && colorType === 'bw') pricePerPage = pricing.text_bw;
+        else if(printType === 'text' && colorType === 'color') pricePerPage = pricing.text_color;
+        else if(printType === 'photo' && colorType === 'bw') pricePerPage = pricing.photo_bw;
+        else if(printType === 'photo' && colorType === 'color') pricePerPage = pricing.photo_color;
+
+        let total = pricePerPage * pages * copies;
+
+        if(deliveryMethod === 'delivery') {
+            total += pricing.delivery;
+            deliveryAddressField.style.display = 'block';
+        } else {
+            deliveryAddressField.style.display = 'none';
+        }
+
+        totalPriceSpan.textContent = total.toFixed(2);
+    }
+
+    pagesField.addEventListener('input', updateTotalPrice);
+    copiesField.addEventListener('input', updateTotalPrice);
+    colorField.addEventListener('change', updateTotalPrice);
+    printTypeField.addEventListener('change', updateTotalPrice);
+    deliveryMethodField.addEventListener('change', updateTotalPrice);
+
+    // Initialize on page load
+    updateTotalPrice();
+</script>
+{% endblock %}

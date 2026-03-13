@@ -1,0 +1,18 @@
+<h2>Payment Request Sent</h2>
+
+<p>A Mobile Money payment request has been sent to your phone.</p>
+
+<p>Please approve the payment to continue printing.</p>
+
+<p><strong>Order ID:</strong> {{ order.id }}</p>
+
+<p><strong>Total Price:</strong> GHS {{ order.price }}</p>
+
+<p>Make payment to this number: <strong>0598942136 | ABC ENTERPRISE </strong></p>
+
+<p>Once payment is confirmed, your order will start printing.</p>
+
+<!-- Back to Home Button -->
+<a href="{% url 'home' %}" class="btn-primary back-home">
+    &#8592; Home
+</a>
