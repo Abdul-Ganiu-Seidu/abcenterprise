@@ -1,16 +1,18 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html>
 
 <head>
 
 <title>ABC Enterprise</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
 
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto&display=swap" rel="stylesheet">
 
 </head>
 
@@ -19,11 +21,13 @@
 <header>
 
 <div class="header-container">
-    <img src="{% static 'images/logo.png' %}" alt="ABC Enterprise Logo" class="logo">
-    <h2 class="business-name">ABC Enterprise</h2> 
+<img src="{% static 'images/logo.png' %}" class="logo">
+<h2 class="business-name">ABC Enterprise</h2>
 </div>
 
-<nav>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<nav id="nav-menu">
 
 <a href="/">Home</a>
 <a href="/services/">Services</a>
@@ -35,9 +39,15 @@
 
 </header>
 
+
+<main>
+
 {% block content %}
 
 {% endblock %}
+
+</main>
+
 
 <footer>
 
@@ -45,10 +55,24 @@
 
 <p>Phone: 0242664489 / 0246071333</p>
 
-<p> Wulensi | Bimbilla</p>
+<p>Wulensi | Bimbilla</p>
 
 </footer>
 
-</body>
 
+<a href="https://wa.me/233242664489" class="whatsapp-btn" target="_blank">
+💬
+</a>
+
+
+<script>
+
+function toggleMenu(){
+const menu = document.getElementById("nav-menu");
+menu.classList.toggle("show");
+}
+
+</script>
+
+</body>
 </html>

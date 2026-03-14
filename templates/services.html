@@ -1,29 +1,52 @@
 {% extends "base.html" %}
-{% load static %}   
+{% load static %}
 
 {% block content %}
 
-<section id="services" class="services">
+<section class="services">
 
-    <h2>Our Services</h2>
+<h2>Our Services</h2>
 
-    <div class="service-card">
-        <img src="{% static 'images/printing.jpg' %}" width="200">
-        <h3>Printing Services</h3>
-        <p>Fast document printing and photocopy services.</p>
-    </div>
+<div class="services-grid">
 
-    <div class="service-card">
-        <img src="{% static 'images/browsing.jpg' %}" width="200">
-        <h3>Internet Browsing</h3>
-        <p>High-speed internet access.</p>
-    </div>
+<div class="service-card">
+<img src="{% static 'images/printing.jpg' %}">
+<h3>Printing Services</h3>
+<p>Fast document printing and photocopy services.</p>
+</div>
 
-    <div class="service-card">
-        <img src="{% static 'images/stationery.jpg' %}" width="200">
-        <h3>Stationery Sales</h3>
-        <p>Books, pens and office supplies.</p>
-    </div>
+<div class="service-card">
+<img src="{% static 'images/browsing.jpg' %}">
+<h3>Internet Browsing</h3>
+<p>High-speed internet access.</p>
+</div>
+
+<div class="service-card">
+<img src="{% static 'images/stationery.jpg' %}">
+<h3>Stationery Sales</h3>
+<p>Books, pens and office supplies.</p>
+</div>
+
+<div class="service-card">
+<img src="{% static 'images/ict_training.jpg' %}">
+<h3>ICT Training</h3>
+<p>Basic and advanced computer training for students and professionals.</p>
+</div>
+
+<div class="service-card">
+<img src="{% static 'images/computer_consumables.jpeg' %}">
+<h3>Sale of Computer Consumables</h3>
+<p>We sell printer cartridges, toners, flash drives, cables and other computer accessories.</p>
+</div>
+
+<div class="service-card">
+<img src="{% static 'images/photo_framing.jpg' %}">
+<h3>Photo Framing</h3>
+<p>Professional photo framing services for certificates, portraits and special memories.</p>
+</div>
+
+</div>
 
 </section>
+
 {% endblock %}
